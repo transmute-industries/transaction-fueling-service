@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '@okta/okta-react';
+import NewUserForm from './NewUserForm';
 
 class Login extends Component {
   constructor(props) {
@@ -31,10 +32,17 @@ class Login extends Component {
   }
 
   render() {
+    const login = this.state.authenticated ?
+    <button onClick={this.logout}>Logout</button> :
+    <button onClick={this.login}>Login</button>;
+
     if (this.state.authenticated === null) return null;
-    return this.state.authenticated ?
-      <button onClick={this.logout}>Logout</button> :
-      <button onClick={this.login}>Login</button>;
+    return (
+      <div>
+        <NewUserForm/>
+        {login}
+      </div>
+    )
   }
 };
 
