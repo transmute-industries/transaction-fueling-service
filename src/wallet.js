@@ -46,21 +46,6 @@ async function sendTransaction(rawTx,privateKey){
   return txHash;
 }
 
-async function mint(from,value,privateKey){
-  const txCount = await web3.eth.getTransactionCount(from);
-  var data = managedToken.methods.mint(from,value).encodeABI();
-  var rawTx ={
-    nonce: web3.utils.toHex(txCount),
-    gasLimit: web3.utils.toHex(100000),
-    gasPrice: web3.utils.toHex(10e9),
-    to: managedToken.options.address,
-    from: from,
-    data: data
-  }
-  const txHash = await sendTransaction(rawTx,privateKey);
-  return txHash;
-}
-
 async function burn(from,value,privateKey){
   const txCount = await web3.eth.getTransactionCount(from);
   var data = managedToken.methods.burn(value).encodeABI();
@@ -92,4 +77,4 @@ async function transfer(from,to,value,privateKey){
 }
 
 export {getSymbol,getTotalSupply,getBalance,makeNewAccount,makeKeystore,
-  decryptAccount,mint,burn,transfer}
+  decryptAccount,burn,transfer}

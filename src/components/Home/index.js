@@ -9,7 +9,8 @@ class Home extends Component {
   state = {value:0,user:null}
 
   componentDidMount = async() =>{
-    const user = await this.props.auth.getUser();
+    const user = await this.props.auth.getUser()
+    console.log(user)
     this.setState({user:user});
   }
 

@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <Router>
-          <Security auth={auth}>
+          <Security auth={auth} scope={['profile']}>
             <Switch>
               <Route path='/' exact={true} component={Login} />
               <Route path='/implicit/callback' component={ImplicitCallback} />

@@ -13,8 +13,7 @@ class ActionsTab extends Component {
   }
 
   earn = async(value)=>{
-    const txHash = await wallet.mint(this.state.userAddress,value,this.state.privateKey);
-    this.setState({txHash:txHash});
+
   }
 
   redeem = async(value)=>{
@@ -28,6 +27,7 @@ class ActionsTab extends Component {
   }
 
   render() {
+
     return (
       <div>
         <Action title='Earn' label='Tokens Earned' handleClick={this.earn} buttonText='Earn'/>
